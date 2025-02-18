@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web de Citas para Perros</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ff9a9e, #fad0c4);
+            background-size: 400% 400%;
+            animation: gradient-animation 10s ease infinite;
+        }
+
+        /* Animación del fondo con gradiente */
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Estilo de los contenedores principales */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Animación de aparición de los contenedores */
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        h1, h2 {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4CAF50;
+            margin-top: 20px;
+            font-size: 36px;
+            animation: text-pop 1.5s ease-out;
+        }
+
+        @keyframes text-pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Estilo del formulario */
+        form {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #4CAF50;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 18px;
+            color: #555;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo de los perfiles de perros */
+        .dog-profile {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dog-profile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .dog-profile img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .dog-profile img:hover {
+            transform: scale(1.05);
+        }
+
+        .dog-info {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .highlight {
+            color: #FF5722;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Botones flotantes */
+        .btn-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #FF5722;
+            color: white;
+            border-radius: 50%;
+            padding: 20px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-floating:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor de la portada -->
+    <div class="container">
+        <h1>¡Bienvenido a la Web de Citas para Perros!</h1>
+        <h2>¡Encuentra la pareja ideal para tu perro!</h2>
+    </div>
+
+    <!-- Contenedor del formulario -->
+    <div class="container">
+        <h2>Registrar Nuevo Perro</h2>
+        <form action="agregar_perro.php" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="raza">Raza:</label>
+            <input type="text" id="raza" name="raza">
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="0" required>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo">
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion"></textarea>
+
+            <label for="imagen_url">URL de Imagen:</label>
+            <input type="text" id="imagen_url" name="imagen_url">
+
+            <input type="submit" value="Registrar Perro">
+        </form>
+    </div>
+
+    <!-- Contenedor de los perros registrados -->
+    <div class="container">
+        <h2>Perros Registrados</h2>
+        <div id="perros-lista">
+            <!-- Aquí se mostrarán los perfiles de perros -->
+            <div class="dog-profile">
+                <img src="https://via.placeholder.com/600x400?text=Perro+Feliz" alt="Perro 1">
+                <div class="dog-info">
+                    <p><span class="highlight">Nombre:</span> Max</p>
+                    <p><span class="highlight">Raza:</span> Labrador</p>
+                    <p><span class="highlight">Edad:</span> 3 años</p>
+                    <p><span class="highlight">Sexo:</span> Macho</p>
+                    <p><span class="highlight">Descripción:</span> Max es un perro activo y amigable, perfecto para parejas o familias.</p>
+                </div>
+            </div>
+
+            <div class="dog-profile">
+                <img src="https://via.placeholder.com/600x400?text=Perra+Feliz" alt="Perra 2">
+                <div class="dog-info">
+                    <p><span class="highlight">Nombre:</span> Bella</p>
+                    <p><span class="highlight">Raza:</span> Beagle</p>
+                    <p><span class="highlight">Edad:</span> 2 años</p>
+                    <p><span class="highlight">Sexo:</span> Hembra</p>
+                    <p><span class="highlight">Descripción:</span> Bella es una perra curiosa y cariñosa, ideal para compañeros activos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante -->
+    <div class="btn-floating" onclick="alert('¡Gracias por visitar nuestra web!')">
+        &#43;
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Web de Citas para Perros | Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
