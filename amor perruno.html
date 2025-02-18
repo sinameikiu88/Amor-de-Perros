@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Social de Citas para Perros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🐶 Amor Perruno - Encuentra la Pareja Perfecta 🐾</h1>
+    </header>
+
+    <section id="registro">
+        <h2>Registra a tu Perro</h2>
+        <form id="formulario">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="raza" placeholder="Raza" required>
+            <input type="number" id="edad" placeholder="Edad" required>
+            <select id="sexo">
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+            <input type="url" id="foto" placeholder="URL de la Foto" required>
+            <button type="submit">Registrar</button>
+        </form>
+    </section>
+
+    <section id="perfiles">
+        <h2>Perros Registrados</h2>
+        <div id="lista-perfiles"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
